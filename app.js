@@ -18,8 +18,8 @@ app.get("/items", (req, res) => {
 })
 
 app.post("/items", (req, res) => {
-    if (req.body.todoItem) {
-        todoItems = [...todoItems, req.body.todoItem]
+    if (req.body) {
+        todoItems = [...todoItems, req.body]
     }
     res.send(todoItems)
 })
@@ -27,7 +27,6 @@ app.post("/items", (req, res) => {
 app.delete("/items", (req, res) => {
     if (req.body) {
         todoItems.forEach((item) => {
-            console.log(item.id, req.body.id)
             if (item.id === req.body.id) {
                 item.isDelete = true
             }
